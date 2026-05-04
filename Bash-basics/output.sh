@@ -7,3 +7,6 @@ var2=$2
 
 echo $var1
 echo $var2
+
+echo "Number of arguments used $#"
+echo "variable used are $@"
