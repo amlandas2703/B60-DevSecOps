@@ -5,7 +5,7 @@ step ()
 {
     echo "Hello everyone"
     echo "The script name is $0"
-    echo "The number of arguements used is $#"
+    echo "The number of arguements used is $@"
 }
 
 step
