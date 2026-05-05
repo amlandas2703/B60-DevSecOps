@@ -1,17 +1,13 @@
+!#/bin/bash
+
+# 
 #!/bin/bash
 
-step ()
-{
-    var1=$1
-    var2=$2
-    echo "The number of arguements used is $#"
-    echo "Hello everyone"
-    echo "The script name is $0"
-    
+myfunc() {
+  echo "Args in function: $#"
+  echo "First arg: $1"
 }
 
-step
-sleep 2
-step
-sleep 2
-step
+echo "Script args: $#"
+myfunc "$@"  # Passes all script args to function
+
