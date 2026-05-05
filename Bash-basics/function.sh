@@ -3,12 +3,15 @@
 # 
 #!/bin/bash
 
-myfunc() {
+step() {
   echo "Args in function: $#"
   echo "First arg: $1"
   echo "Second arg: $2"
 }
 
 echo "Script args: $#"
-myfunc "$@"  # Passes all script args to function
+step "$@"  # Passes all script args to function
+sleep 2
+step "$@"
+
 
