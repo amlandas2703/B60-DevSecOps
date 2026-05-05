@@ -1,17 +1,13 @@
-!#/bin/bash
-
-# 
 #!/bin/bash
 
-step() {
-  echo "Args in function: $#"
-  echo "First arg: $1"
-  echo "Second arg: $2"
+step()
+{
+    echo "The number of arguments passed is $#"
+    echo " The first arg: $1"
+    echo "the second arg: $2"
+
 }
 
-echo "Script args: $#"
-step "$@"  # Passes all script args to function
-sleep 2
 step "$@"
-
-
+sleep 1
+step "$@"
