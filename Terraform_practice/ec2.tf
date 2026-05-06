@@ -3,6 +3,6 @@ resource "aws_instance" "dasa" {
     instance_type = "t3.micro"
 
     tags = {
-      name = "demo_machine1"
+      name = "demo_machine123"
     }
 }
