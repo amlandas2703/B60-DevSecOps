@@ -8,7 +8,8 @@ else
     echo -e "\e[33m Welcome to the script \e[0m"
 fi
 
-stat(){
+stat()
+{
     if [ $1 -eq 0 ];then
         echo -e "\e[32m Success \e[0m"
     else    
