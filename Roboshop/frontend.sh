@@ -43,5 +43,5 @@ stat $?
 
 echo "Unzipping the ${COMPONENT} component: "
 cd /usr/share/nginx/html
-unzip /tmp/${COMPONENT}.zip &>> $LOG
+unzip -o /tmp/${COMPONENT}.zip . &>> $LOG
 stat $?
