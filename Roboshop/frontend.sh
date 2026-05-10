@@ -42,5 +42,6 @@ rm -rf *
 stat $?
 
 echo "Unzipping the ${COMPONENT} component: "
+sudo yum install unzip -y &>> $LOG
 unzip -o /tmp/$COMPONENT.zip -d /usr/share/nginx/html/ &>> $LOG
 stat $?
