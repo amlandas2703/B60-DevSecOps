@@ -51,7 +51,7 @@ stat $?
 
 echo -n "Starting and enabling nginx service: "
 systemctl enable nginx &>> $LOG
-systemctl restart nginx $>> $LOG
+systemctl restart nginx &>> $LOG
 stat $?
 
 
