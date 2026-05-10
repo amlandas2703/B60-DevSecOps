@@ -46,6 +46,6 @@ unzip -o /tmp/${COMPONENT}.zip -d /usr/share/nginx/html/ &>> $LOG
 stat $?
 
 echo -n "Copying the configuration file: "
-cp nginx.conf /etc/nginx.conf
+cp nginx.conf /etc/nginx/nginx.conf
 stat $?
 
