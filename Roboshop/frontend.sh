@@ -33,7 +33,7 @@ stat $?
 
 
 echo -n "Download the ${COMPONENT} code: "
-curl -L -o /tmp/frontend.zip https://stan-robotshop.s3.amazonaws.com/${COMPONENT}.zip &>> $LOG
+curl -L -o /tmp/frontend.zip https://stan-robotshop.s3.amazonaws.com/${COMPONENT}-v3.zip &>> $LOG
 stat $?
 
 echo -n "Removing the defailt nginx files: "
@@ -42,6 +42,5 @@ rm -rf *
 stat $?
 
 echo "Unzipping the ${COMPONENT} component: "
-sudo yum install unzip -y &>> $LOG
-unzip -o /tmp/$COMPONENT.zip -d /usr/share/nginx/html/ &>> $LOG
+unzip -o /tmp/${COMPONENT}-v3.zip -d /usr/share/nginx/html/ &>> $LOG
 stat $?
