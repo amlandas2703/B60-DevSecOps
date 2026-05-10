@@ -23,3 +23,12 @@ stat()
 echo -n "Configuring the ${COMPONENT} repo: "
 cp /home/ec2-user/B60-DevSecOps/Roboshop/mongo.repo /etc/yum.repos.d/mongo.repo
 stat $?
+
+echo -n "Installing mongodb: "
+dnf install mongodb-org -y &>> $LOG 
+stat $?
+
+echo -n "Starting mongo service: "
+systemctl enable mongod &>> $LOG 
+systemctl start mongod &>> $LOG
+stat $?
