@@ -20,20 +20,20 @@ stat()
 } 
 
 echo -n "Disabling nginx default package version: "
-dnf module disable nginx -y > $LOG
+dnf module disable nginx -y &>> $LOG
 stat $?
 
 echo -n "Enabling nginx package version: "
-dnf module enable nginx:1.24 -y >> $LOG
+dnf module enable nginx:1.24 -y &>> $LOG
 stat $?
 
 echo -n "installing nginx package: "
-dnf install nginx -y >> $LOG
+dnf install nginx -y &>> $LOG
 stat $?
 
 
 echo -n "Download the ${COMPONENT} code: "
-curl -L -o /tmp/frontend.zip https://stan-robotshop.s3.amazonaws.com/${COMPONENT}.zip >> $LOG
+curl -L -o /tmp/frontend.zip https://stan-robotshop.s3.amazonaws.com/${COMPONENT}.zip &>> $LOG
 stat $?
 
 echo -n "Removing the defailt nginx files: "
