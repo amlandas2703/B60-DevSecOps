@@ -32,3 +32,7 @@ echo -n "Starting mongo service: "
 systemctl enable mongod &>> $LOG 
 systemctl start mongod &>> $LOG
 stat $?
+
+echo -n "Updating the ${COMPONENT} visibility: "
+sed -ie "127.0.0.1/0.0.0.0" /etc/mongod.conf
+stat $?
