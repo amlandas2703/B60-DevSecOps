@@ -41,6 +41,11 @@ cd /usr/share/nginx/html
 rm -rf *
 stat $?
 
-echo "Unzipping the ${COMPONENT} component: "
+echo -n "Unzipping the ${COMPONENT} component: "
 unzip -o /tmp/${COMPONENT}.zip -d /usr/share/nginx/html/ &>> $LOG
 stat $?
+
+echo -n "Copying the configuration file: "
+cp nginx.conf /etc/nginx.conf
+stat $?
+
