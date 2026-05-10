@@ -19,14 +19,14 @@ stat()
     fi
 } 
 
-echo -e "\e[32m Disabling nginx default package version \e[0m"
+echo -n "Disabling nginx default package version: "
 dnf module disable nginx -y > $LOG
 stat $?
 
-echo -e "\e[32m Enabling nginx package version \e[0m"
+echo -n "Enabling nginx package version: "
 dnf module enable nginx:1.24 -y >> $LOG
 stat $?
 
-echo -e "\e[32m installing nginx package \e[0m"
+echo -n "installing nginx package: "
 dnf install nginx -y >> $LOG
 stat $?
