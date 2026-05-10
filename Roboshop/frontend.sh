@@ -40,3 +40,7 @@ echo -n "Removing the defailt nginx files: "
 cd /usr/share/nginx/html
 rm -rf *
 stat $?
+
+echo "Unzipping the ${COMPONENT} component: "
+unzip /tmp/frontend.zip &>> $LOG
+stat $?
