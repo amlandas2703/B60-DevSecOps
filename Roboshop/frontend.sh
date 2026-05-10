@@ -42,5 +42,5 @@ rm -rf *
 stat $?
 
 echo "Unzipping the ${COMPONENT} component: "
-unzip -o /tmp/${COMPONENT}.zip /usr/share/nginx/html/ &>> $LOG
+unzip -o /tmp/${COMPONENT}.zip -d /usr/share/nginx/html/ &>> $LOG
 stat $?
