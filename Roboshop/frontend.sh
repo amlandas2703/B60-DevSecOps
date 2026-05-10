@@ -46,6 +46,6 @@ unzip -o /tmp/${COMPONENT}.zip -d /usr/share/nginx/html/ &>> $LOG
 stat $?
 
 echo -n "Copying the proxy configuration file: "
-cp nginx.conf /etc/nginx/nginx.conf
+cp /home/ec2-user/B60-DevSecOps/Roboshop/nginx.conf /etc/nginx/nginx.conf
 stat $?
 
