@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ID=$(id -u)
-COMPONENT= "frontend"
+COMPONENT="frontend"
 LOG="/tmp/${COMPONENT}.log"
 
 if [ $ID -ne 0 ];then
