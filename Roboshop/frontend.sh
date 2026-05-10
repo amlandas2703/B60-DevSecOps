@@ -45,7 +45,7 @@ echo -n "Unzipping the ${COMPONENT} component: "
 unzip -o /tmp/${COMPONENT}.zip -d /usr/share/nginx/html/ &>> $LOG
 stat $?
 
-echo -n "Copying the configuration file: "
+echo -n "Copying the proxy configuration file: "
 cp nginx.conf /etc/nginx/nginx.conf
 stat $?
 
