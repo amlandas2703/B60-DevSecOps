@@ -46,6 +46,7 @@ unzip -o /tmp/${COMPONENT}.zip -d /usr/share/nginx/html/ &>> $LOG
 stat $?
 
 echo -n "Copying the configuration file: "
-cp Roboshop/nginx.conf /etc/nginx/nginx.conf
+rm -rf /etc/nginx/nginx.conf
+cp nginx.conf /etc/nginx/nginx.conf
 stat $?
 
