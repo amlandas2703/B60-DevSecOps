@@ -49,3 +49,11 @@ echo -n "Copying the proxy configuration file: "
 cp /home/ec2-user/B60-DevSecOps/Roboshop/nginx.conf /etc/nginx/nginx.conf
 stat $?
 
+echo -n "Starting and enabling nginx service: "
+systemctl enable nginx &>> $LOG
+systemctl restart nginx $>> $LOG
+stat $?
+
+
+echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "
+
