@@ -19,6 +19,13 @@ stat()
     fi
 } 
 
+start()
+{
+    echo -n "Starting mongo service: "
+    systemctl enable mongod &>> $LOG 
+    systemctl start mongod &>> $LOG
+
+}
 
 echo -n "Configuring the ${COMPONENT} repo: "
 cp /home/ec2-user/B60-DevSecOps/Roboshop/mongo.repo /etc/yum.repos.d/mongo.repo
@@ -28,11 +35,17 @@ echo -n "Installing mongodb: "
 dnf install mongodb-org -y &>> $LOG 
 stat $?
 
-echo -n "Starting mongo service: "
-systemctl enable mongod &>> $LOG 
-systemctl start mongod &>> $LOG
+
+echo -n "Start ${COMPONENT} service: "
+start
 stat $?
+
+
 
 echo -n "Updating the ${COMPONENT} visibility: "
 sed -ie 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+stat $?
+
+echo -n "Start ${COMPONENT} service: "
+start
 stat $?
