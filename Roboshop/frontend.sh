@@ -33,5 +33,10 @@ stat $?
 
 
 echo -n "Download the ${COMPONENT} code: "
-curl -L -o /tmp/frontend.zip https://stan-robotshop.s3.amazonaws.com/${COMPONENT}.zip
+curl -L -o /tmp/frontend.zip https://stan-robotshop.s3.amazonaws.com/${COMPONENT}.zip >> $LOG
+stat $?
+
+echo -n "Removing the defailt nginx files: "
+cd /usr/share/nginx/html
+rm -rf *
 stat $?
