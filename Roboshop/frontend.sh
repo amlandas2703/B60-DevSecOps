@@ -30,3 +30,8 @@ stat $?
 echo -n "installing nginx package: "
 dnf install nginx -y >> $LOG
 stat $?
+
+
+echo -n "Download the ${COMPONENT} code: "
+curl -L -o /tmp/frontend.zip https://stan-robotshop.s3.amazonaws.com/${COMPONENT}.zip
+stat $?
