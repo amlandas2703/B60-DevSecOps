@@ -66,7 +66,6 @@ cp /home/ec2-user/B60-DevSecOps/Roboshop/${COMPONENT}.service /etc/systemd/syste
 stat $?
 
 echo -n "Enabling and starting the service: "
-systemctl daemon-reload &>> $LOG
 systemctl start $COMPONENT &>> $LOG
 systemctl enable $COMPONENT &>> $LOG
 stat $?
