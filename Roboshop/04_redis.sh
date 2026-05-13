@@ -42,11 +42,11 @@ stat $?
 
 
 echo -n "Updating the ${COMPONENT} visibility: "
-sed -ie 's/127.0.0.1/0.0.0.0/' /etc/${COMPONENT}.conf &>> $LOG
+sed -ie 's/127.0.0.1/0.0.0.0/' /etc/redis/${COMPONENT}.conf &>> $LOG
 stat $?
 
 echo -n "Updating the ${COMPONENT} protected mode: "
-sed -ie 's/protected-mode yes/protected-mode no/'  /etc/${COMPONENT}.conf &>> $LOG
+sed -ie 's/protected-mode yes/protected-mode no/'  /etc/redis/${COMPONENT}.conf &>> $LOG
 stat $?
 
 
