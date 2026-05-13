@@ -71,8 +71,8 @@ stat $?
 
 echo -n "Enabling and starting the service: "
 systemctl daemon-reload &>> $LOG
-systemctl start catalogue &>> $LOG
-systemctl enable catalogue &>> $LOG
+systemctl start $COMPONENT &>> $LOG
+systemctl enable $COMPONENT &>> $LOG
 stat $?
 
 echo -n "Configuring the mongodb repo: "
