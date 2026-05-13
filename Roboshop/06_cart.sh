@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ID=$(id -u)
-COMPONENT="user"
+COMPONENT="cart"
 LOG="/tmp/${COMPONENT}.log"
 APPUSER="roboshop"
 
