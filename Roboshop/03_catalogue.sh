@@ -74,3 +74,12 @@ systemctl daemon-reload &>> $LOG
 systemctl start catalogue &>> $LOG
 systemctl enable catalogue &>> $LOG
 stat $?
+
+echo -n "Configuring the mongodb repo: "
+cp /home/ec2-user/B60-DevSecOps/Roboshop/mongo.repo /etc/yum.repos.d/mongo.repo
+stat $?
+
+echo -n "Installing mongodb: "
+dnf install mongodb-org -y &>> $LOG 
+stat $?
+
