@@ -66,7 +66,7 @@ npm install &>> $LOG
 stat $?
 
 echo -n "Configuring the service: "
-cp ${COMPONENT}.service /etc/systemd/system/${COMPONENT}.service &>> $LOG
+cp ./${COMPONENT}.service /etc/systemd/system/${COMPONENT}.service &>> $LOG
 stat $?
 
 echo -n "Enabling and starting the service: "
