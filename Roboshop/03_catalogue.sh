@@ -34,10 +34,10 @@ echo -n "Installing nodejs package: "
 dnf install nodejs -y &>> $LOG
 stat $?
 
-id $APPUSER
+id $APPUSER &>> $LOG
 if [ $? -ne 0 ];then
     echo -n "Creating $APPUSER: "
-    useradd $APPUSER
+    useradd $APPUSER 
     stat $?
 else
     echo -e "\e[33m Skipping \e[0m"
