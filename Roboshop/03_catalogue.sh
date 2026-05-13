@@ -64,3 +64,13 @@ echo -n "Installing the nodejs dependencies: "
 cd /app
 npm install &>> $LOG
 stat $?
+
+echo -n "Configuring the service: "
+cp ${COMPONENT}.service /etc/systemd/system/${COMPONENT}.service &>> $LOG
+stat $?
+
+echo -n "Enabling and starting the service: "
+systemctl daemon-reload &>> $LOG
+systemctl start catalogue &>> $LOG
+systemctl enable catalogue &>> $LOG
+stat $?
