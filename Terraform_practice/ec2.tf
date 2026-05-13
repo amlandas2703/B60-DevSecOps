@@ -6,3 +6,7 @@ resource "aws_instance" "dasa" {
       name = "demo_machine123"
     }
 }
+
+output "private_ip_address" {
+    value = aws_instance.dasa.private_ip 
+}
