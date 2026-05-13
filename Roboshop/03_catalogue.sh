@@ -52,3 +52,7 @@ echo -n "Extracting the $COMPONENT app: "
 cd /app
 unzip /tmp/${COMPONENT}.zip &>> $LOG
 stat $?
+
+echo -n "Installing the nodejs dependencies: "
+npm install &>> $LOG
+stat $?
