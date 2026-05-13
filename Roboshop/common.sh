@@ -66,6 +66,16 @@ svc_config()
     stat $?
 }
 
+install_mongodb_shell()
+{
+    echo -n "Configuring the mongodb repo: "
+    cp /home/ec2-user/B60-DevSecOps/Roboshop/mongo.repo /etc/yum.repos.d/mongo.repo
+    stat $?
+
+    echo -n "Installing mongodb: "
+    dnf install mongodb-org -y &>> $LOG 
+    stat $?
+}
 
 
 
@@ -96,7 +106,14 @@ node_js()
     cd /app
     npm install &>> $LOG
     stat  $?
-    
+
+   
+    if [ "$COMPONENT" == "catalogue" ]; then
+        echo -n "Injecting the schema :"
+        mongosh --host mongodb.bihamlanet.store </app/db/master-data.js &>> $LOG
+        stat $? 
+    fi 
+
 
     echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "
 
