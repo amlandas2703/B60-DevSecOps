@@ -54,3 +54,6 @@ stat $?
 echo -n "Starting ${COMPONENT} service: "
 start
 stat $?
+
+
+echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "

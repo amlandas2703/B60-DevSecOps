@@ -93,3 +93,6 @@ if [ "$COMPONENT" == "catalogue" ]; then
     mongosh --host mongodb.bihamlanet.store </app/db/master-data.js &>> $LOG
     stat $? 
 fi 
+
+
+echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "

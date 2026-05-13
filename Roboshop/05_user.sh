@@ -77,3 +77,5 @@ cd /app
 npm install &>> $LOG
 stat  $?
     
+
+echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "
