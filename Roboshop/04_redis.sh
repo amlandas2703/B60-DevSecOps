@@ -28,25 +28,25 @@ start()
 }
 
 echo -n "Disabling the default ${COMPONENT}: "
-dnf module disable redis -y
+dnf module disable redis -y &>> $LOG
 stat $?
 
 echo -n "Enabling the ${COMPONENT}:7 repo: "
-dnf module enable redis:7 -y
+dnf module enable redis:7 -y &>> $LOG
 stat $?
 
 echo -n "Installing $COMPONENT: "
-dnf install $COMPONENT -y &>> $LOG 
+dnf install $COMPONENT -y &>> $LOG &>> $LOG
 stat $?
 
 
 
 echo -n "Updating the ${COMPONENT} visibility: "
-sed -ie 's/127.0.0.1/0.0.0.0/' /etc/${COMPONENT}.conf
+sed -ie 's/127.0.0.1/0.0.0.0/' /etc/${COMPONENT}.conf &>> $LOG
 stat $?
 
 echo -n "Updating the ${COMPONENT} protected mode: "
-sed -ie 's/protected-mode yes/protected-mode no/'  /etc/${COMPONENT}.conf
+sed -ie 's/protected-mode yes/protected-mode no/'  /etc/${COMPONENT}.conf &>> $LOG
 stat $?
 
 
