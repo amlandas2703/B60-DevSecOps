@@ -60,6 +60,7 @@ cd /app
 unzip -o /tmp/${COMPONENT}.zip -d /app/  &>> $LOG
 stat $?
 
-# echo -n "Installing the nodejs dependencies: "
-# npm install &>> $LOG
-# stat $?
+echo -n "Installing the nodejs dependencies: "
+cd /app
+npm install &>> $LOG
+stat $?
