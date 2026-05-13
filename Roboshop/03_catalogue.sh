@@ -60,10 +60,10 @@ cd /app
 unzip -o /tmp/${COMPONENT}.zip -d /app/  &>> $LOG
 stat $?
 
-echo -n "Installing the nodejs dependencies: "
-cd /app
-npm install &>> $LOG
-stat $?
+# echo -n "Installing the nodejs dependencies: "
+# cd /app
+# npm install &>> $LOG
+# stat $?
 
 echo -n "Configuring the service: "
 cp /home/ec2-user/B60-DevSecOps/Roboshop/${COMPONENT}.service /etc/systemd/system/${COMPONENT}.service &>> $LOG
@@ -83,3 +83,13 @@ echo -n "Installing mongodb: "
 dnf install mongodb-org -y &>> $LOG 
 stat $?
 
+echo -n "Generating $COMPONENT Artifacts :"
+cd /app
+npm install &>> $LOG
+stat  $?
+    
+if [ "$COMPONENT" == "catalogue" ]; then
+    echo -n "Injecting the schema :"
+    mongosh --host mongodb.robotshop.fun </app/db/master-data.js &>> $LOG
+    stat $? 
+fi 
