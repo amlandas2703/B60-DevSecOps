@@ -44,11 +44,11 @@ else
 fi    
 
 echo -n "Performing cleanup of $COMPONENT app directory if exist: "
-rm -rf /app/ || true 
+rm -rf /app || true 
 stat $?
 
 echo -n "Creating the $COMPONENT directory: "
-mkdir /app
+mkdir /app &>> $LOG
 stat $?
 
 echo -n "Downloading the $COMPONENT app: " 
