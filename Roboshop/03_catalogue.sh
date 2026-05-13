@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ID=$(id -u)
-COMPONENT="frontend"
+COMPONENT="catalogue"
 LOG="/tmp/${COMPONENT}.log"
 APPUSER="roboshop"
 
@@ -43,16 +43,23 @@ else
     echo -e "\e[33m Skipping \e[0m"
 fi    
 
-echo -n "Downloading the $COMPONENT app: "
+echo -n "Performing cleanup of $COMPONENT app directory if exist: "
+rm -rf /app/ || true 
+stat $?
+
+echo -n "Creating the $COMPONENT directory: "
 mkdir /app
+stat $?
+
+echo -n "Downloading the $COMPONENT app: " 
 curl -o /tmp/${COMPONENT}.zip https://stan-robotshop.s3.amazonaws.com/${COMPONENT}-v3.zip &>> $LOG
 stat $?
 
 echo -n "Extracting the $COMPONENT app: "
 cd /app
-unzip /tmp/${COMPONENT}.zip &>> $LOG
+unzip -o /tmp/${COMPONENT}.zip -d /app/  &>> $LOG
 stat $?
 
-echo -n "Installing the nodejs dependencies: "
-npm install &>> $LOG
-stat $?
+# echo -n "Installing the nodejs dependencies: "
+# npm install &>> $LOG
+# stat $?
