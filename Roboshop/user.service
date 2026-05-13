@@ -5,7 +5,7 @@ Description = User Service
 [Service]
 User=roboshop
 Environment=MONGO=true
-Environment=REDIS_URL='redis://redis.bihamnet.store:6379'
+Environment=REDIS_URL='redis://redis.bihamlanet.store:6379'
 Environment=MONGO_URL="mongodb://mongodb.bihamlanet.store:27017/users"
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=user
