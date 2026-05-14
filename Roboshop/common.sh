@@ -79,9 +79,6 @@ install_mongodb_shell()
 
 
 
-
-
-
 node_js()
 {
     echo -n "Disabling nodejs default version: "
