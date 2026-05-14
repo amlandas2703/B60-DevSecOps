@@ -157,3 +157,23 @@ node_js()
     echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "
 
 }
+
+
+install_python()
+{
+    echo -n "Installing Pythin: "
+    dnf install python3 gcc python3-devel -y
+    stat $?
+
+    create_user
+
+    download_and_extract
+
+    echo -n "Downloading dependencies: "
+    cd /app &>> $LOG
+    pip3 install -r requirements.txt &>> $LOG
+
+    svc_config
+
+
+}
