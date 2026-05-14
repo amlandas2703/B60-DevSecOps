@@ -29,7 +29,7 @@ create_user()
         useradd $APPUSER 
         stat $?
     else
-        echo -e "\e[33m Skipping \e[0m"
+        echo -e "\e[33m Skipping Appuser creation as already exists \e[0m"
     fi  
     stat $?  
 }
