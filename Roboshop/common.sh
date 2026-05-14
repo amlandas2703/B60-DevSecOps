@@ -66,6 +66,12 @@ svc_config()
     stat $?
 }
 
+install_mysql() {
+    echo -n "Installing mysql :"
+    dnf install mysql -y &>> $LOG
+    stat $?
+}
+
 install_mongodb_shell()
 {
     echo -n "Configuring the mongodb repo: "
@@ -75,6 +81,42 @@ install_mongodb_shell()
     echo -n "Installing mongodb: "
     dnf install mongodb-org -y &>> $LOG 
     stat $?
+}
+
+maven_install()
+{
+    echo -n "Installing maven: "
+    dnf install maven -y
+    stat $?
+
+    create_user
+    download_and_extract
+
+    echo -n "generating $COMPONENT artifacts"
+    cd /app 
+    mvn clean package 
+    mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+    cd -
+    stat $? 
+
+    svc_config
+    install_mysql
+
+    if [ "$COMPONENT" == "shipping" ]; then
+        echo -n "Injecting the schema :"
+        mysql -h mysql.bihamlanet.store -uroot -pRoboShop@1 < /app/db/schema.sql &>> $LOG
+        stat $?
+
+        echo -n "Injecting the app-user info: "
+        mysql -h mysql.bihamlanet.store -uroot -pRoboShop@1 < /app/db/app-user.sql &>> $LOG
+        stat $?
+
+        echo -n "Injecting the master-data info: "
+        mysql -h mysql.bihamlanet.store -uroot -pRoboShop@1 < /app/db/master-data.sql &>> $LOG
+        stat $?
+    fi
+
+    echo -e "\n \t ___ Configuration Management for $COMPONENT in completed! ___"
 }
 
 
