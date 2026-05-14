@@ -86,16 +86,16 @@ install_mongodb_shell()
 maven_install()
 {
     echo -n "Installing maven: "
-    dnf install maven -y
+    dnf install maven -y &>> $LOG
     stat $?
 
     create_user
     download_and_extract
 
     echo -n "generating $COMPONENT artifacts"
-    cd /app 
-    mvn clean package 
-    mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+    cd /app &>> $LOG
+    mvn clean package &>> $LOG 
+    mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar &>> $LOG
     cd -
     stat $? 
 
