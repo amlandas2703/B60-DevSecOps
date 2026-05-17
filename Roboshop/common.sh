@@ -161,8 +161,8 @@ node_js()
 
 install_python()
 {
-    echo -n "Installing Pythin: "
-    dnf install python3 gcc python3-devel -y
+    echo -n "Installing Python: "
+    dnf install python3 gcc python3-devel -y &>> $LOG
     stat $?
 
     create_user
