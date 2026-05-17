@@ -159,7 +159,7 @@ node_js()
    
     if [ "$COMPONENT" == "catalogue" ]; then
         echo -n "Injecting the schema :"
-        mongosh --host mongodb.bihamlanet.store </app/db/master-data.js &>> $LOG
+        mongosh --host mongodb-${ENVIRONMENT}.bihamlanet.store </app/db/master-data.js &>> $LOG
         stat $? 
     fi 
 
