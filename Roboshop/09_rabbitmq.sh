@@ -7,24 +7,24 @@ cp /home/ec2-user/B60-DevSecOps/Roboshop/${COMPONENT}.repo /etc/yum.repos.d/${CO
 stat $?
 
 echo -n "Installing $COMPONENT: "
-dnf install ${COMPONENT}-server -y
+dnf install ${COMPONENT}-server -y &>> $LOG
 stat $?
 
 echo -n "Enabling and starting the service: "
-systemctl enable ${COMPONENT}-server 
-systemctl start ${COMPONENT}-server
+systemctl enable ${COMPONENT}-server &>> $LOG 
+systemctl start ${COMPONENT}-server &>> $LOG
 stat $?
 
 echo -n "Adding $APPUSER: "
-rabbitmqctl add_user roboshop roboshop123
+rabbitmqctl add_user roboshop roboshop123 &>> $LOG
 stat $?
 
 echo -n "Setting user tagse for $APPUSER user: "
-rabbitmqctl set_user_tags roboshop administrator
+rabbitmqctl set_user_tags roboshop administrator &>> $LOG
 stat $?
 
 echo -n "Set permission of $APPUSER user: "
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>> $LOG
 stat $?
 
 echo -e "\n \t ___ Configuration Management for $COMPONENT in completed! ___"
