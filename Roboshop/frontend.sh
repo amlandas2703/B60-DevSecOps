@@ -14,7 +14,8 @@ if [ -z "$1" ]; then
     echo -e "\e[33m Script has to run as root user + EnvironmentName \e[0m"
     echo -e "\e[33m To give example sudo bash $0 dev \e[0m"
     exit 2
-fi    
+fi  
+  
 stat()
 {
     if [ $1 -eq 0 ];then
