@@ -3,7 +3,7 @@
 
 ID=$(id -u)
 LOG="/tmp/${COMPONENT}.log"
-ENVIRONMENT="$1"
+#ENVIRONMENT="$1"
 APPUSER="roboshop"
 
 
