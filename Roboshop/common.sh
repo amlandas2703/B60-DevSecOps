@@ -3,12 +3,19 @@
 
 ID=$(id -u)
 LOG="/tmp/${COMPONENT}.log"
+ENVIRONMENT="$1"
 APPUSER="roboshop"
 
 
 if [ $ID -ne 0 ];then
     echo -e "\e[33m Login as Root user or type sudo command \e[0m"
     exit 1
+fi
+
+if [ -z "$1" ];then
+    echo -e "\e[33m Script has to run as root user + EnvironmentName \e[0m"
+    echo -e "\e[33m To give example sudo bash $0 dev \e[0m"
+    exit 2   
 fi
 
 stat()
@@ -144,7 +151,7 @@ node_js()
 
     svc_config
 
-    echo -n "Generating $COMPONENT Artifacts :"
+    echo -n "Generating $COMPONENT-$ENVIRONMENT Artifacts :"
     cd /app
     npm install &>> $LOG
     stat  $?
@@ -157,7 +164,7 @@ node_js()
     fi 
 
 
-    echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "
+    echo -e "\n \t  ******${COMPONENT}-${ENVIRONMENT} component has been configured successfully****** "
 
 }
 
