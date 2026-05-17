@@ -148,7 +148,7 @@ node_js()
     create_user
 
     download_and_extract
-
+    install_mongodb_shell
     svc_config
 
     echo -n "Generating $COMPONENT-$ENVIRONMENT Artifacts :"
