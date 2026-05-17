@@ -2,6 +2,7 @@
 
 ID=$(id -u)
 COMPONENT="frontend"
+ENVIRONMENT="$1"
 LOG="/tmp/${COMPONENT}.log"
 
 if [ $ID -ne 0 ];then
@@ -18,6 +19,8 @@ stat()
         exit 2
     fi
 } 
+
+echo -e "\n \t  ******${COMPONENT} ${ENVIRONMENT} configuration is in progress****** "
 
 echo -n "Disabling nginx default package version: "
 dnf module disable nginx -y &>> $LOG
