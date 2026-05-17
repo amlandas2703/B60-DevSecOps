@@ -119,7 +119,7 @@ maven_install()
         stat $?
     fi
 
-    echo -e "\n \t ___ Configuration Management for $COMPONENT in completed! ___"
+    echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "
 }
 
 
@@ -177,6 +177,7 @@ install_python()
     pip3 install -r requirements.txt &>> $LOG
 
     svc_config
-
+    
+    echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "
 
 }

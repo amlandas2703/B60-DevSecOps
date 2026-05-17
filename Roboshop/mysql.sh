@@ -17,4 +17,4 @@ echo -n "Configuring the root password"
 mysql_secure_installation --set-root-pass RoboShop@1 &>> $LOG 
 stat $?
 
-echo -e "\n \t ___ Configuration Management for $COMPONENT in completed! ___"
+echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "

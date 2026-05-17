@@ -38,4 +38,4 @@ echo -n "Set permission of $APPUSER user: "
 rabbitmqctl set_permissions -p / $APPUSER ".*" ".*" ".*" &>> $LOG
 stat $?
 
-echo -e "\n \t ___ Configuration Management for $COMPONENT in completed! ___"
+echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "
