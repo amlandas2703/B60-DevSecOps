@@ -60,10 +60,12 @@ svc_config()
     cp /home/ec2-user/B60-DevSecOps/Roboshop/${COMPONENT}.service /etc/systemd/system/${COMPONENT}.service &>> $LOG
     stat $?
 
-    echo -n "Enabling and starting the service: "
+        
+    echo -n "Enabling and starting $COMPONENT service: "
     systemctl start $COMPONENT &>> $LOG
     systemctl enable $COMPONENT &>> $LOG
     stat $?
+        
 }
 
 install_mysql() {
@@ -71,6 +73,7 @@ install_mysql() {
     dnf install mysql -y &>> $LOG
     stat $?
 }
+
 
 install_mongodb_shell()
 {
