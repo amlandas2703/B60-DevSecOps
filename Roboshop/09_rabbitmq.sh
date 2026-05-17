@@ -15,16 +15,20 @@ systemctl enable ${COMPONENT}-server &>> $LOG
 systemctl start ${COMPONENT}-server &>> $LOG
 stat $?
 
-id $APPUSER &>> $LOG
-if [ $? -ne 0 ];then
-    echo -n "Adding $APPUSER: "
-    rabbitmqctl add_user $APPUSER roboshop123 &>> $LOG
+rabbitmqctl list_users | grep roboshop  &>> $LOG
+if [ $? -ne 0 ]; then 
+    echo -n "Creatng $COMPONENT User"
+    rabbitmqctl add_user ${APPUSER} roboshop123
     stat $?
+
+    echo -n "Configuring Permissions: "
+    rabbitmqctl set_user_tags ${APPUSER} administrator
+    rabbitmqctl set_permissions -p / ${APPUSER} ".*" ".*" ".*"
+    stat $?
+
 else 
-    echo -e "\e[33m Skipping as user exist \e[0m"
-fi
-stat $?    
-    
+    echo -e "\e[33m Skipping \e[0m"
+fi   
 
 echo -n "Setting user tagse for $APPUSER user: "
 rabbitmqctl set_user_tags $APPUSER administrator &>> $LOG
