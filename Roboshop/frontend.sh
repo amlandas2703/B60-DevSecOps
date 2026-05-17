@@ -10,13 +10,18 @@ if [ $ID -ne 0 ];then
     exit 1
 fi
 
+if [ -z "$1" ]; then
+    echo -e "\e[33m Script has to run as root user + EnvironmentName \e[0m"
+    echo -e "\e[33m To give example sudo bash $0 dev \e[0m"
+    exit 2
+fi    
 stat()
 {
     if [ $1 -eq 0 ];then
         echo -e "\e[32m Success \e[0m"
     else
         echo -e "\e[31m Failure \e[0m"
-        exit 2
+        exit 3
     fi
 } 
 
@@ -50,12 +55,13 @@ stat $?
 
 echo -n "Copying the proxy configuration file: "
 cp /home/ec2-user/B60-DevSecOps/Roboshop/nginx.conf /etc/nginx/nginx.conf
+sed -i -e "s/env/$ENVIRONMENT/g" /etc/nginx/nginx.conf
 stat $?
 
-echo -n "Starting and enabling nginx service: "
-systemctl enable nginx &>> $LOG
-systemctl restart nginx &>> $LOG
-stat $?
+#echo -n "Starting and enabling nginx service: "
+#systemctl enable nginx &>> $LOG
+#systemctl restart nginx &>> $LOG
+#stat $?
 
 
 echo -e "\n \t  ******${COMPONENT} component has been configured successfully****** "
