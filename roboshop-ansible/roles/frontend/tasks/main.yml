@@ -1,15 +1,15 @@
 - name: Disabling {{ package }} default version
-  ansible.builtin.shell: dnf module disable {{ package }} -y
+  ansible.builtin.shell: dnf module disable "{{ package }}" -y
 
 - name: Disabling {{ package }} default version
-  ansible.builtin.shell: dnf module enable {{ package }}:{{ packageversion }} -y
+  ansible.builtin.shell: dnf module enable "{{ package }}":"{{ packageversion }}" -y
 
-- name: Installing {{ package }}
+- name: Installing "{{ package }}"
   ansible.builtin.dnf:
       name: "{{ package }}"
       state: present
 
-- name: Starting {{ package }} service
+- name: Starting "{{ package }}" service
   ansible.builtin.service:
       name: "{{ package }}"
       state: started
