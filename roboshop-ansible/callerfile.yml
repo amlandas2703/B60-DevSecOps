@@ -1,5 +1,5 @@
 - name: Playbook to call the roles
-  hosts: frontend
+  hosts: "{{ component }}"
   become: true
   roles:
-    - frontend
+    - "{{ component }}"
