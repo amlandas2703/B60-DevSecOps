@@ -1,6 +1,6 @@
 package: 
-  - nginx
+  - "nginx"
 packageversion: 
   - "1.24"
 url: 
-  - curl -L -o /tmp/frontend.zip https://stan-robotshop.s3.amazonaws.com/frontend-v3.zip
+  - "curl -L -o /tmp/frontend.zip https://stan-robotshop.s3.amazonaws.com/frontend-v3.zip"

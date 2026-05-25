@@ -1,13 +1,19 @@
-- name: Disabling nginx default version
+- name: Disabling {{ package }} default version
   ansible.builtin.shell: dnf module disable {{ package }} -y
 
-- name: Disabling nginx default version
+- name: Disabling {{ package }} default version
   ansible.builtin.shell: dnf module enable {{ package }}:{{ packageversion }} -y
 
 - name: Installing {{ package }}
   ansible.builtin.dnf:
       name: "{{ package }}"
       state: present
+
+- name: Starting {{ package }} service
+  ansible.builtin.service:
+      name: "{{ package }}"
+      state: started
+      enabled: true      
 
 - name: creating {{ package }} directory
   ansible.builtin.file:
