@@ -13,7 +13,7 @@
       name: "{{ package }}"
       state: present
 
-  - name: cleaning the directory
+- name: cleaning the directory
   ansible.builtin.file:
        path: /usr/share/"{{ package }}"/html
        state: absent
