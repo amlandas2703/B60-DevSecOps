@@ -1,1 +1,2 @@
-package: "mongodb"
+package: "mongodb-org"
+component: "mongodb"

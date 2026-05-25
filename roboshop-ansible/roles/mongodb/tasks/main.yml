@@ -1,11 +1,11 @@
 - name: copying  repo file
   ansible.builtin.copy:
-    src: "{{ package }}".repo
+    src: "{{ component }}".repo
     dest: /etc/yum.repos.d/"{{ package }}".repo
 
 - name: installing "{{ package }}"
   ansible.builtin.dnf:
-    name: "{{ package }}-org"
+    name: "{{ package }}"
     state: present
 
 - name: Starting "{{ package }}" service
@@ -15,4 +15,4 @@
       enabled: true       
 
 - name: configuring the hostname
-  ansible.builtin.shell: set-hostname mongodb-"{{ env }}"      
+  ansible.builtin.shell: set-hostname "{{ component }}"-"{{ env }}"      
