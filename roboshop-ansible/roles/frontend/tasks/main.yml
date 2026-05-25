@@ -1,0 +1,21 @@
+- name: Disabling nginx default version
+  ansible.builtin.shell: dnf module disable {{ package }} -y
+
+- name: Disabling nginx default version
+  ansible.builtin.shell: dnf module enable {{ package }}:{{ packageversion }} -y
+
+- name: Installing {{ package }}
+  ansible.builtin.dnf:
+      name: {{ package }}
+      state: present
+
+- name: creating {{ package }} directory
+  ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: directory
+
+- name: Download and extract archive from URL
+  ansible.builtin.unarchive:
+    src: "{{ url }}"
+    dest: "/usr/share/nginx/html"
+    remote_src: true      
