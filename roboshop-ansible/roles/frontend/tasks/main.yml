@@ -13,13 +13,7 @@
       name: "{{ package }}"
       state: present
 
-- name: Starting "{{ package }}" service
-  ansible.builtin.service:
-      name: "{{ package }}"
-      state: started
-      enabled: true    
-
-- name: cleaning the directory
+  - name: cleaning the directory
   ansible.builtin.file:
        path: /usr/share/"{{ package }}"/html
        state: absent
@@ -42,3 +36,10 @@
   ansible.builtin.template:
     src: nginx.conf
     dest: /etc/nginx/nginx.conf      
+
+
+- name: Starting "{{ package }}" service
+  ansible.builtin.service:
+      name: "{{ package }}"
+      state: restarted
+      enabled: true      
