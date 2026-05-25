@@ -1,5 +1,5 @@
 - name: Playbook to call the roles
-  hosts: inv-dev
+  hosts: frontend
   become: true
   roles:
     - frontend
