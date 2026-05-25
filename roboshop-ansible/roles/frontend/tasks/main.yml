@@ -5,7 +5,7 @@
   ansible.builtin.shell: dnf module enable "{{ package }}":"{{ packageversion }}" -y
 
 - name: changing the hostname
-  ansible.builtin.shell: hostnamectl set-hostname frontend-"{{ env }}" 
+  ansible.builtin.shell: set-hostname frontend-"{{ env }}" 
       
 
 - name: Installing "{{ package }}"
