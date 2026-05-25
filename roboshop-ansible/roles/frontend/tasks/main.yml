@@ -35,4 +35,10 @@
   ansible.builtin.unarchive:
     src: "{{ url }}"
     dest: /usr/share/"{{ package }}"/html
-    remote_src: true      
+    remote_src: true     
+
+
+- name: Copying the nginx configuration file
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf      
