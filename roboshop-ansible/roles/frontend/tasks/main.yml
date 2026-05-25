@@ -6,7 +6,7 @@
 
 - name: Installing {{ package }}
   ansible.builtin.dnf:
-      name: {{ package }}
+      name: "{{ package }}"
       state: present
 
 - name: creating {{ package }} directory
