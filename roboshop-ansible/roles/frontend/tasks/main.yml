@@ -13,11 +13,11 @@
       name: "{{ package }}"
       state: present
 
-- name: Starting "{{ package }}" service
-  ansible.builtin.service:
-      name: "{{ package }}"
-      state: started
-      enabled: true        
+# - name: Starting "{{ package }}" service
+#   ansible.builtin.service:
+#       name: "{{ package }}"
+#       state: started
+#       enabled: true        
 
 - name: cleaning the directory
   ansible.builtin.file:
