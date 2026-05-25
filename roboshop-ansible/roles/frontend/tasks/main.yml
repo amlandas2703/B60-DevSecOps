@@ -4,6 +4,10 @@
 - name: Disabling {{ package }} default version
   ansible.builtin.shell: dnf module enable "{{ package }}":"{{ packageversion }}" -y
 
+- name: changing the hostname
+  ansible.builtin.hostname:
+      name: "{{ component }}"-"{{ env }}"
+
 - name: Installing "{{ package }}"
   ansible.builtin.dnf:
       name: "{{ package }}"
@@ -15,7 +19,7 @@
       state: started
       enabled: true      
 
-- name: creating {{ package }} directory
+- name: creating "{{ package }}" directory
   ansible.builtin.file:
       path: /usr/share/nginx/html
       state: directory
