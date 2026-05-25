@@ -6,7 +6,7 @@
 
 - name: changing the hostname
   ansible.builtin.hostname:
-      name: "{{ component }}"-"{{ env }}"
+      name: "{{ component }}""{{ env }}"
 
 - name: Installing "{{ package }}"
   ansible.builtin.dnf:
