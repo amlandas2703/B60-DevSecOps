@@ -41,5 +41,5 @@
 - name: Starting "{{ package }}" service
   ansible.builtin.service:
       name: "{{ package }}"
+      enabled: yes
       state: restarted
-      enabled: true      
