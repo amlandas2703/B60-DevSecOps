@@ -37,7 +37,33 @@
   ansible.builtin.command: npm install
   args:
     chdir: "{{ AppDirectory }}"
+
+- name: Copying the template file
+  ansible.builtin.template:
+    src: "{{ component }}.service"
+    dest: /etc/systemd/system/{{ component }}.service   
+
+- name: Reload systemd daemon
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Start and enable {{ component }} service
+  ansible.builtin.service:
+    name: "{{ component }}"
+    state: started
+    enabled: yes
+
+# Optional: Check service status (prints to Ansible output)
+- name: Show {{ component }} service status
+  ansible.builtin.command: systemctl status {{ component }} -l
+  register: service_status
+  ignore_errors: yes
+
+- name: Print service status
+  ansible.builtin.debug:
+    var: service_status.stdout     
      
+
 
 
   
