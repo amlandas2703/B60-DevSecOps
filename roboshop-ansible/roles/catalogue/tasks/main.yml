@@ -1,0 +1,51 @@
+- name: Disabling {{ package }} default version
+  ansible.builtin.shell: dnf module disable "{{ package }}" -y
+
+- name: Disabling {{ package }} default version
+  ansible.builtin.shell: dnf module enable "{{ package }}":"{{ packageversion }}" -y
+
+- name: changing the hostname
+  ansible.builtin.shell: set-hostname frontend-"{{ env }}" 
+      
+
+- name: Installing "{{ package }}"
+  ansible.builtin.dnf:
+      name: "{{ package }}"
+      state: present
+
+# - name: Starting "{{ package }}" service
+#   ansible.builtin.service:
+#       name: "{{ package }}"
+#       state: started
+#       enabled: true        
+
+- name: cleaning the directory
+  ansible.builtin.file:
+       path: /usr/share/"{{ package }}"/html
+       state: absent
+
+- name: creating "{{ package }}" directory
+  ansible.builtin.file:
+      path: /usr/share/"{{ package }}"/html
+      state: directory
+
+
+
+- name: Download and extract archive from URL
+  ansible.builtin.unarchive:
+    src: "{{ url }}"
+    dest: /usr/share/"{{ package }}"/html
+    remote_src: true     
+
+
+- name: Copying the nginx configuration file
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf      
+
+
+- name: Starting "{{ package }}" service
+  ansible.builtin.service:
+      name: "{{ package }}"
+      enabled: yes
+      state: restarted

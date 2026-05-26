@@ -1,4 +1,5 @@
 package: "nginx"
 packageversion: "1.24"
 url: "https://stan-robotshop.s3.amazonaws.com/frontend-v3.zip"
+component: "frontend"
 
