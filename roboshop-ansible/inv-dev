@@ -1,2 +1,5 @@
 [frontend]
 frontend-dev.bihamlanet.store
+
+[mongodb]
+mongodb-dev.bihamlanet.store
