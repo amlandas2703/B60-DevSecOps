@@ -25,8 +25,6 @@
       path: "{{ AppDirectory }}"
       state: directory
 
-
-
 - name: Download and extract archive from URL
   ansible.builtin.unarchive:
     src: "{{ url }}"
@@ -53,15 +51,16 @@
     state: started
     enabled: yes
 
-# Optional: Check service status (prints to Ansible output)
-- name: Show {{ component }} service status
-  ansible.builtin.command: systemctl status {{ component }} -l
-  register: service_status
-  ignore_errors: yes
+- name: copying mongodb repo file
+  ansible.builtin.copy:
+    src: "{{ component }}.repo"
+    dest: /etc/yum.repos.d/{{ component }}.repo
 
-- name: Print service status
-  ansible.builtin.debug:
-    var: service_status.stdout     
+- name: installing mongodb
+  ansible.builtin.dnf:
+    name: mongodb-mongosh
+    state: present    
+   
      
 
 
