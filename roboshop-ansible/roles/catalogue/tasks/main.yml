@@ -53,8 +53,8 @@
 
 - name: copying mongodb repo file
   ansible.builtin.copy:
-    src: "{{ component }}.repo"
-    dest: /etc/yum.repos.d/{{ component }}.repo
+    src: "mongodb.repo"
+    dest: /etc/yum.repos.d/mongodb.repo
 
 - name: installing mongodb
   ansible.builtin.dnf:
