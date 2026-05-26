@@ -1,7 +1,7 @@
 - name: copying  repo file
   ansible.builtin.copy:
-    src: "{{ component }}".repo
-    dest: /etc/yum.repos.d/"{{ component }}".repo
+    src: "{{ component }}.repo"
+    dest: /etc/yum.repos.d/{{ component }}.repo
 
 - name: installing "{{ package }}"
   ansible.builtin.dnf:
