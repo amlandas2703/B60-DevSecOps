@@ -39,7 +39,7 @@
 - name: Copying the template file
   ansible.builtin.template:
     src: "{{ component }}.service"
-    dest: /etc/systemd/system/{{ component }}.service   
+    dest: "/etc/systemd/system/{{ component }}.service"
 
 - name: Reload systemd daemon
   ansible.builtin.systemd:
@@ -62,7 +62,7 @@
     state: present    
    
 - name: Injecting the schema
-  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.bihamlanet.store </app/db/master-data.js"  
+  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.bihamlanet.store < /app/db/master-data.js"  
 
 - name: Configuring the hostName
   ansible.builtin.shell: set-hostname {{ component }}-{{ env }}   
