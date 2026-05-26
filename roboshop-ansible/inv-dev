@@ -3,3 +3,6 @@ frontend-dev.bihamlanet.store
 
 [mongodb]
 mongodb-dev.bihamlanet.store
+
+[catalogue]
+catalogue-dev.bihamlanet.store
