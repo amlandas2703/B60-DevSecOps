@@ -12,7 +12,20 @@
   ansible.builtin.service:
       name: mongod
       state: started
-      enabled: true       
+      enabled: true   
+
+- name: Configuring the conf file to be accessible from outside
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Restarting the mongod service
+  ansible.builtin.service:
+      name: mongod
+      state: restarted    
+
+
 
 # - name: configuring the hostname
 #   ansible.builtin.shell: set-hostname "{{ component }}"-"{{ env }}"      
