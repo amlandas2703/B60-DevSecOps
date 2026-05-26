@@ -44,18 +44,4 @@
     remote_src: true     
 
 
-- name: Copying the nginx configuration file
-  ansible.builtin.template:
-    src: nginx.conf
-    dest: /etc/nginx/nginx.conf      
-
-
-- name: Starting "{{ package }}" service
-  ansible.builtin.service:
-      name: "{{ package }}"
-      enabled: yes
-      state: restarted
-
-
-- name: changing the hostname
-  ansible.builtin.shell: set-hostname frontend-"{{ env }}"       
+  
