@@ -17,7 +17,7 @@
        
 - name: Creating "{{ AppDirectory }}"
   ansible.builtin.file:
-      path: /"{{ AppDirectory }}"
+      path: /{{ AppDirectory }}
       state: directory
 # - name: Starting "{{ package }}" service
 #   ansible.builtin.service:
