@@ -31,7 +31,13 @@
   ansible.builtin.unarchive:
     src: "{{ url }}"
     dest: "{{ AppDirectory }}"
-    remote_src: true     
+    remote_src: true
+
+- name: Run npm install
+  ansible.builtin.command: npm install
+  args:
+    chdir: "{{ AppDirectory }}"
+     
 
 
   
