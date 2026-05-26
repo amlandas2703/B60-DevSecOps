@@ -40,7 +40,7 @@
 - name: Download and extract archive from URL
   ansible.builtin.unarchive:
     src: "{{ url }}"
-    dest: /"{{ AppDirectory }}"
+    dest: /{{ AppDirectory }}
     remote_src: true     
 
 
