@@ -55,7 +55,8 @@
       state: present   
 
 - name: Injecting the schema
-  ansible.builtin.shell: mysql -h mysql-{{ env }}.bihamlanet.store -uroot -pRoboShop@1 < /app/db/{{ item }}  
+  ansible.builtin.shell: mysql -h mysql-{{ env }}.bihamlanet.store -uroot -pRoboShop@1 < /app/db/{{ item }} 
+  loop: " {{ schema }}" 
 
 - name: Starting {{ component }} service
   ansible.builtin.service:
