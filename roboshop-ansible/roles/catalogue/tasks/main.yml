@@ -29,27 +29,17 @@
   ansible.builtin.unarchive:
     src: "{{ url }}"
     dest: "{{ AppDirectory }}"
-    remote_src: true
+    remote_src: yes
 
-- name: Run npm install
-  ansible.builtin.command: npm install
-  args:
-    chdir: "{{ AppDirectory }}"
+- name: Generating artifact dependencies for {{ component }} service
+  community.general.npm:
+    path: "{{ AppDirectory }}" 
 
 - name: Copying the template file
   ansible.builtin.template:
     src: "{{ component }}.service"
     dest: "/etc/systemd/system/{{ component }}.service"
 
-- name: Reload systemd daemon
-  ansible.builtin.systemd:
-    daemon_reload: yes
-
-- name: Start and enable {{ component }} service
-  ansible.builtin.service:
-    name: "{{ component }}"
-    state: started
-    enabled: yes
 
 - name: copying mongodb repo file
   ansible.builtin.copy:
@@ -63,6 +53,14 @@
    
 - name: Injecting the schema
   ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.bihamlanet.store < {{ AppDirectory }}/db/master-data.js"  
+
+
+- name: Starting {{ component }} service
+  ansible.builtin.service:
+    name: "{{ component }}"
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
 
 - name: Configuring the hostName
   ansible.builtin.shell: set-hostname {{ component }}-{{ env }}   
