@@ -5,6 +5,6 @@ AppUser: "roboshop"
 AppDirectory: "/app"
 component: "shipping"
 schema:
-  - schema.sql
-  - app-user.sql
-  - master-data.sql
+  - "schema.sql"
+  - "app-user.sql"
+  - "master-data.sql"
