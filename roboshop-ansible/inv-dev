@@ -25,3 +25,6 @@ shipping-dev.bihamlanet.store
 
 [rabbitmq]
 rabbitmq-dev.bihamlanet.store
+
+[payment]
+payment-dev.bihamlanet.store
