@@ -16,7 +16,7 @@
 
 
 - name: Creating "{{ AppUser }}" for "{{ component }}"
-  ansible.builtin.user:
+  community.rabbitmq.rabbitmq_user:
       name: "{{ AppUser }}"
       password: roboshop123
       vhost: /
