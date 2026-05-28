@@ -9,3 +9,6 @@ catalogue-dev.bihamlanet.store
 
 [redis]
 redis-dev.bihamlanet.store
+
+[user]
+user-dev.bihamlanet.store
