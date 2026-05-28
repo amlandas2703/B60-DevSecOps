@@ -1,0 +1,39 @@
+- name: Disabling {{ package }} default version
+  ansible.builtin.shell: dnf module disable "{{ package }}" -y
+
+- name: Disabling {{ package }} default version
+  ansible.builtin.shell: dnf module enable "{{ package }}":"{{ packageversion }}" -y
+
+
+- name: Installing "{{ package }}"
+  ansible.builtin.dnf:
+      name: "{{ package }}"
+      state: present
+
+- name: Update BindIP in /etc/redis.conf
+  ansible.builtin.replace:
+    path: /etc/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+
+- name: Update BindIP in /etc/redis/redis.conf
+  ansible.builtin.replace:
+    path: /etc/redis/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Update protected-mode from yes to no in /etc/redis/redis.conf
+  ansible.builtin.replace:
+    path: /etc/redis/redis.conf
+    regexp: 'protected-mode yes'
+    replace: 'protected-mode no'
+
+- name: start {{ component }} database
+  ansible.builtin.service:
+    name: "{{ component }}"
+    state: started
+    enabled: true    
+        
+   
+

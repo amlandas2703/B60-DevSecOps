@@ -6,3 +6,6 @@ mongodb-dev.bihamlanet.store
 
 [catalogue]
 catalogue-dev.bihamlanet.store
+
+[redis]
+redis-dev.bihamlanet.store
