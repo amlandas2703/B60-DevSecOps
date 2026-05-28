@@ -34,6 +34,9 @@
     name: "{{ component }}"
     state: started
     enabled: true    
+
+- name: Configuring the hostName
+  ansible.builtin.shell: set-hostname {{ component }}-{{ env }}         
         
    
 
