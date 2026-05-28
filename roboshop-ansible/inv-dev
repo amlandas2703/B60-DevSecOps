@@ -18,3 +18,7 @@ cart-dev.bihamlanet.store
 
 [mysql]
 mysql-dev.bihamlanet.store
+
+
+[shipping]
+shipping-dev.bihamlanet.store
