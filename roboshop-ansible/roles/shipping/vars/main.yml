@@ -1,0 +1,10 @@
+package: "maven"
+packageversion: "20"
+url: "https://stan-robotshop.s3.amazonaws.com/shipping-v3.zip"
+AppUser: "roboshop"
+AppDirectory: "/app"
+component: "shipping"
+schema:
+  - schema.sql
+  - app-user.sql
+  - master-data.sql
