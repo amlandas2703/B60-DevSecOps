@@ -12,3 +12,6 @@ redis-dev.bihamlanet.store
 
 [user]
 user-dev.bihamlanet.store
+
+[cart]
+cart-dev.bihamlanet.store
