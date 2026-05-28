@@ -49,13 +49,13 @@
     state: started
     daemon_reload: yes
 
-- name: Installing "{{ package }}"
+- name: Installing mysql
   ansible.builtin.dnf:
       name: mysql
       state: present   
 
 - name: Injecting the schema
-  ansible.builtin.shell: "mysql -h mysql-dev.bihamlanet.store -uroot -pRoboShop@1 < /app/db/{{ item }}"  
+  ansible.builtin.shell: mysql -h mysql-dev.bihamlanet.store -uroot -pRoboShop@1 < /app/db/{{ item }}  
 
 - name: Starting {{ component }} service
   ansible.builtin.service:
