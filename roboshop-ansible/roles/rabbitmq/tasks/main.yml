@@ -1,0 +1,30 @@
+- name: copying "{{ component }}" repo file
+  ansible.builtin.copy:
+    src: "{{ component }}.repo"
+    dest: /etc/yum.repos.d/{{ component }}.repo
+
+- name: installing "{{ package }}"
+  ansible.builtin.dnf:
+    name: "{{ package }}"
+    state: present
+
+- name: Starting "{{ package }}" service
+  ansible.builtin.service:
+      name: "{{ package }}"
+      state: started
+      enabled: true   
+
+
+- name: Creating "{{ AppUser }}" for "{{ component }}"
+  ansible.builtin.user:
+      name: "{{ AppUser }}"
+      password: roboshop123
+      vhost: /
+      configure_priv: .*
+      read_priv: .*
+      write_priv: .*
+      state: present
+
+ 
+- name: configuring the hostname
+  ansible.builtin.shell: set-hostname "{{ component }}"-"{{ env }}"      

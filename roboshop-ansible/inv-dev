@@ -22,3 +22,6 @@ mysql-dev.bihamlanet.store
 
 [shipping]
 shipping-dev.bihamlanet.store
+
+[rabbitmq]
+rabbitmq-dev.bihamlanet.store
