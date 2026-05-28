@@ -52,7 +52,7 @@
     state: present    
    
 - name: Injecting the schema
-  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.bihamlanet.store < {{ AppDirectory }}/db/master-data.js"  
+  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.bihamlanet.store < /app/db/master-data.js"  
 
 
 - name: Starting {{ component }} service
