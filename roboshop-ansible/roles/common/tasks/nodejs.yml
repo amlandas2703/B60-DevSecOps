@@ -10,7 +10,7 @@
       name: "{{ package }}"
       state: present
 
-- name: Creating {{ AppUser }} user and {{ AppDirectory }} directory for {{ component }} service
+- name: Creating app user and app directory for {{ component }} service
   ansible.builtin.include_role:
     name: common
     include_tasks: createUser&App
