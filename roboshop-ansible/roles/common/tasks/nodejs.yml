@@ -10,10 +10,10 @@
       name: "{{ package }}"
       state: present
 
-- name: Creating app user and app directory for {{ component }} service
+- name: Creating {{ AppUser }} and app directory {{ AppDirectory }} for {{ component }} service
   ansible.builtin.include_role:
     name: common
-    include_tasks: createUser&App
+    tasks_from: createUser&App
 
 - name: Generating artifact dependencies for {{ component }} service
   community.general.npm:
@@ -23,19 +23,19 @@
 - name: Injecting Mongodb schema for {{ component }} service
   ansible.builtin.include_role:
     name: common
-    include_tasks: injectMongoSchema
+    tasks_from: injectMongoSchema
   when: setup_mongodb_schema is defined
 
 - name: Configure the {{ component }} service
   ansible.builtin.include_role:
     name: common
-    include_tasks: configureService    
+    tasks_from: configureService    
 
 
 - name: Configuring the hostName
   ansible.builtin.include_role:
     name: common
-    include_tasks: setHostname.yml
+    tasks_froms: setHostname.yml
 
 
      
