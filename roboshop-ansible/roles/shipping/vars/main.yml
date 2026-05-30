@@ -8,4 +8,4 @@ schema:
   - "schema.sql"
   - "app-user.sql"
   - "master-data.sql"
-setup_mongodb_schema: true  
+setup_mysql_schema: true  
