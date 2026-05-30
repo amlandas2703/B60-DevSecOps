@@ -1,0 +1,37 @@
+- name: Install Python and build dependencies
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ package }}"  
+  
+
+- name: Creating {{ AppUser }} and app directory {{ AppDirectory }} for {{ component }} service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: createUser&App  
+
+
+- name: Install Python dependencies from requirements.txt
+  ansible.builtin.pip:
+    requirements: /app/requirements.txt
+    chdir: /app
+
+
+- name: Configure the {{ component }} service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: configureService 
+
+
+- name: Configuring {{ component }} hostname
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: setHostname
+
+
+
+     
+
+
+
+  
