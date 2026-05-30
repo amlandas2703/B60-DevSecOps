@@ -1,0 +1,12 @@
+- name: copying mongodb repo file
+  ansible.builtin.copy:
+    src: "mongodb.repo"
+    dest: /etc/yum.repos.d/mongodb.repo
+
+- name: installing mongodb
+  ansible.builtin.dnf:
+    name: mongodb-mongosh
+    state: present    
+   
+- name: Injecting the schema
+  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.bihamlanet.store < /app/db/master-data.js"  

@@ -4,3 +4,4 @@ url: "https://stan-robotshop.s3.amazonaws.com/catalogue-v3.zip"
 AppUser: "roboshop"
 AppDirectory: "/app"
 component: "catalogue"
+setup_mongodb_schema: true #This is a variable which is used to decide whether to inject mongodb schema or not. This is required only for catalogue component and not for cart or user component. Hence we have defined this variable here in catalogue role and not in common role.

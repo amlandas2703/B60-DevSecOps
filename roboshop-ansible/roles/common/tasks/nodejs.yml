@@ -10,60 +10,32 @@
       name: "{{ package }}"
       state: present
 
-- name: Creating "{{ AppUser }}" user
-  ansible.builtin.user:
-      name: "{{ AppUser }}"
-      state: present
-
-- name: cleaning the "{{ AppDirectory }}"
-  ansible.builtin.file:
-        path: "{{ AppDirectory }}"
-        state: absent
-       
-- name: Creating the "{{ AppDirectory }}"
-  ansible.builtin.file:
-      path: "{{ AppDirectory }}"
-      state: directory
-
-- name: Download and extract archive from URL
-  ansible.builtin.unarchive:
-    src: "{{ url }}"
-    dest: "{{ AppDirectory }}"
-    remote_src: yes
+- name: Creating "{{ AppUser }}" user and {{ AppDirectory }} directory for {{ component }} service
+  ansible.builtin.include_role:
+    name: common
+    include_tasks: createUser&App
 
 - name: Generating artifact dependencies for {{ component }} service
   community.general.npm:
     path: "{{ AppDirectory }}" 
 
-- name: Copying the template file
-  ansible.builtin.template:
-    src: "{{ component }}.service"
-    dest: "/etc/systemd/system/{{ component }}.service"
+#This task is only required for catalogue component and not for cart or user component
+- name: Injecting Mongodb schema for {{ component }} service
+  ansible.builtin.include_role:
+    name: common
+    include_tasks: injectMongoSchema
+  when: setup_mongodb_schema is defined
 
+- name: Configure the {{ component }} service
+  ansible.builtin.include_role:
+    name: common
+    include_tasks: configureService    
 
-- name: copying mongodb repo file
-  ansible.builtin.copy:
-    src: "mongodb.repo"
-    dest: /etc/yum.repos.d/mongodb.repo
-
-- name: installing mongodb
-  ansible.builtin.dnf:
-    name: mongodb-mongosh
-    state: present    
-   
-- name: Injecting the schema
-  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.bihamlanet.store < /app/db/master-data.js"  
-
-
-- name: Starting {{ component }} service
-  ansible.builtin.service:
-    name: "{{ component }}"
-    enabled: yes
-    state: restarted
-    daemon_reload: yes
 
 - name: Configuring the hostName
-  ansible.builtin.shell: set-hostname {{ component }}-{{ env }}   
+  ansible.builtin.include_role:
+    name: common
+    include_tasks: setHostname.yml
 
 
      

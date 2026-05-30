@@ -1,0 +1,20 @@
+- name: Creating "{{ AppUser }}" user
+  ansible.builtin.user:
+      name: "{{ AppUser }}"
+      state: present
+
+- name: cleaning the "{{ AppDirectory }}"
+  ansible.builtin.file:
+        path: "{{ AppDirectory }}"
+        state: absent
+       
+- name: Creating the "{{ AppDirectory }}"
+  ansible.builtin.file:
+      path: "{{ AppDirectory }}"
+      state: directory
+
+- name: Download and extract archive from URL
+  ansible.builtin.unarchive:
+    src: "{{ url }}"
+    dest: "{{ AppDirectory }}"
+    remote_src: yes
