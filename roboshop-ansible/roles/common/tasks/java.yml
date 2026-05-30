@@ -1,0 +1,35 @@
+- name: Installing "{{ package }}"
+  ansible.builtin.dnf:
+      name: "{{ package }}"
+      state: present
+
+- name: Creating {{ AppUser }} and app directory {{ AppDirectory }} for {{ component }} service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: createUser&App
+
+
+
+- name: Build Java application with Maven
+  ansible.builtin.shell: mvn clean package && mv target/{{ component }}-1.0.jar {{ component }}.jar
+  args:
+    chdir: "{{ AppDirectory }}"
+  
+
+- name: Injecting Mysql schema for {{ component }} service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: injectMysqlSchema
+  when: setup_mysql_schema is defined  
+  
+
+- name: Configure the {{ component }} service
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: configureService 
+
+
+- name: Configuring {{ component }} hostname
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: setHostname

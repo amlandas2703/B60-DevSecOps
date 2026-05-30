@@ -1,72 +1,13 @@
-- name: Installing "{{ package }}"
-  ansible.builtin.dnf:
-      name: "{{ package }}"
-      state: present
-
-- name: Creating "{{ AppUser }}" user
-  ansible.builtin.user:
-      name: "{{ AppUser }}"
-      state: present
-
-- name: cleaning the "{{ AppDirectory }}"
-  ansible.builtin.file:
-        path: "{{ AppDirectory }}"
-        state: absent
-       
-- name: Creating the "{{ AppDirectory }}"
-  ansible.builtin.file:
-      path: "{{ AppDirectory }}"
-      state: directory
-
-- name: Download and extract archive from URL
-  ansible.builtin.unarchive:
-    src: "{{ url }}"
-    dest: "{{ AppDirectory }}"
-    remote_src: yes
-
-# - name: Generating artifact dependencies for {{ component }} service
-#   community.general.npm:
-#     path: "{{ AppDirectory }}" 
-
-- name: Build Java application with Maven
-  ansible.builtin.shell: mvn clean package && mv target/{{ component }}-1.0.jar {{ component }}.jar
-  args:
-    chdir: "{{ AppDirectory }}"
-  # become: yes
-  # become_user: "{{ AppUser }}"
-
-- name: Copying the template file
-  ansible.builtin.template:
-    src: "{{ component }}.service"
-    dest: "/etc/systemd/system/{{ component }}.service"
+- name: Configuring {{ component }} service
+  ansible.builtin.include_role:
+    name: common     #Calling the other role which is common role
+    tasks_from: java   # Tasks from the role
 
 
 
-- name: Starting {{ component }} service
-  ansible.builtin.service:
-    name: "{{ component }}"
-    enabled: yes
-    state: started
-    daemon_reload: yes
 
-- name: Installing mysql
-  ansible.builtin.dnf:
-      name: mysql
-      state: present   
 
-- name: Injecting the schema
-  loop: "{{ schema }}" 
-  ansible.builtin.shell: mysql -h mysql-{{ env }}.bihamlanet.store -uroot -pRoboShop@1 < /app/db/{{ item }} 
   
-
-- name: Starting {{ component }} service
-  ansible.builtin.service:
-    name: "{{ component }}"
-    enabled: yes
-    state: restarted
-
-- name: Configuring the hostName
-  ansible.builtin.shell: set-hostname {{ component }}-{{ env }}   
 
 
      
