@@ -7,6 +7,6 @@ resource "aws_instance" "dasa_test" {
     }
 }
 
-output "private_ip_address" {
-    value = aws_instance.dasa_test.private_ip 
-}
+# output "private_ip_address" {
+#     value = aws_instance.dasa_test.private_ip 
+# }
