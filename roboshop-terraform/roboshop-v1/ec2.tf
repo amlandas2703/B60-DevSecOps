@@ -4,7 +4,7 @@ resource "aws_instance" "main" {
     instance_type = var.instance_type
 
     tags = {
-      Name = "${var.components}}"
+      Name = "${var.components[count.index]}"
     }
   
 }
