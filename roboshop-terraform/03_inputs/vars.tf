@@ -15,6 +15,6 @@ variable "vegetable" {
 }
 
 output "veg_name" {
-  value = var.vegetable[1]
+  value = var.vegetable[2]
   
 }
