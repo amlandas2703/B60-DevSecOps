@@ -6,3 +6,15 @@ variable "cityname" {
 output "cityname" {
   value = var.cityname
 }
+
+
+variable "vegetable" {
+  description = "Name of the vegetable"
+  type        = list(string)
+  
+}
+
+output "veg_name" {
+  value = var.vegetable[1]
+  
+}
