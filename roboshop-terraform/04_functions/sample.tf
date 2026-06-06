@@ -1,8 +1,6 @@
-variable "fruitsinfo" {}
+variable "fruits" {}
 
-output "fruits" {
-  value = var.fruitsinfo
-}
+
 
 
 
@@ -17,4 +15,3 @@ output "bananaproperties" {
 }
 
   
-}
