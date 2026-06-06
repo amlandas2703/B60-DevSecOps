@@ -80,3 +80,35 @@ output "name_and_quantity" {
   value = "The quantity of ${var.fruits_details["banana"].color} banana is ${var.fruits_details["banana"].quantity}"
   
 }
+
+
+variable "fruitInfo" {
+    description = "A map of fruits and their details"
+    type        = map(map(string))
+    default     = {
+        apple = {
+        color = "red"
+        taste = "sweet"
+        price = 1.5
+        quantity = 10
+        }
+        banana = {
+        color = "yellow"
+        taste = "sweet"
+        price = 0.5
+        quantity = 20
+        }
+        orange = {
+        color = "orange"
+        taste = "citrus"
+        price = 1.0
+        quantity = 15
+        }
+    }
+  
+}
+
+output "name_and_price_using_map_of_string" {
+  value = "The price of ${var.fruitInfo["apple"]["color"]} apple is ${var.fruitInfo["apple"]["price"]} dollars"
+  
+}
