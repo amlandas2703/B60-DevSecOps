@@ -9,8 +9,8 @@ output "appleproperties" {
   
 }
 
-output "name_and_price" {
-  value = "The color of apple is ${lookup(var.fruits["banana"],"color","unknown")}, its taste is ${lookup(var.fruits["banana"],"taste", "unknown")}, its price is ${lookup(var.fruits["banana"], "price", "unknown")} dollars and its quantity is ${lookup(var.fruits["banana"],"quantity","unknown")} and it is from ${lookup(var.fruits["banana"], "state", "Karnataka")}"
+output "banana" {
+  value = "The color of banana is ${lookup(var.fruits["banana"],"color","unknown")}, its taste is ${lookup(var.fruits["banana"],"taste", "unknown")}, its price is ${lookup(var.fruits["banana"], "price", "unknown")} dollars and its quantity is ${lookup(var.fruits["banana"],"quantity","unknown")} and it is from ${lookup(var.fruits["banana"], "state", "Karnataka")}"
   
 }
   
