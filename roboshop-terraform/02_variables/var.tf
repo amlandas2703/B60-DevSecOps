@@ -28,12 +28,13 @@ variable "score" {
   default     = {
     math    = 90,
     science = 85,
-    english = 92
+    english = 92,
+    hindi   = 88
   }
   
 }
 
 output "my_score" {
-  value = "My score in science is ${var.score["science"]}"
+  value = "My score in science is ${var.score["hindi"]}"
   
 }
