@@ -18,3 +18,13 @@ output "veg_name" {
   value = var.vegetable[2]
   
 }
+
+variable "environment" {
+  description = "Name of the environment"
+  type        = string
+  
+}
+
+output "environment" {
+    value = var.environment
+}
