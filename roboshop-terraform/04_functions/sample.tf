@@ -1,7 +1,7 @@
-variable "fruits" {}
+variable "fruitsinfo" {}
 
 output "fruits" {
-  value = var.fruits
+  value = var.fruitsinfo
 }
 
 

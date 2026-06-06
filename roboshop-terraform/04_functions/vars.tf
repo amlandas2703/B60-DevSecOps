@@ -1,4 +1,4 @@
-fruits = {
+fruitsinfo = {
     
     apple = {
         color = "red"
