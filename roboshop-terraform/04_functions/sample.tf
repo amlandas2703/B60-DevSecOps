@@ -5,13 +5,12 @@ variable "fruits" {}
 
 
 output "appleproperties" {
-  value = "The color of apple is ${var.fruits["apple"].color}, its taste is ${var.fruits["apple"].taste}, its price is ${var.fruits["apple"].price} dollars and its quantity is ${var.fruits["apple"].quantity} and it is from ${var.fruits["apple"].state}"
-
-}
-
-output "bananaproperties" {
-  value = "The color of banana is ${var.fruits["banana"].color}, its taste is ${var.fruits["banana"].taste}, its price is ${var.fruits["banana"].price} dollars and its quantity is ${var.fruits["banana"].quantity} and it is from ${var.fruits["banana"].state}"
+  value = "The color of apple is ${lookup(var.fruits["apple"],"color","unknown")}, its taste is ${lookup(var.fruits["apple"],"taste", "unknown")}, its price is ${lookup(var.fruits["apple"], "price", "unknown")} dollars and its quantity is ${lookup(var.fruits["apple"],"quantity","unknown")} and it is from ${lookup(var.fruits["apple"], "state", "unknown")}"
   
 }
 
+output "name_and_price" {
+  value = "The color of apple is ${lookup(var.fruits["banana"],"color","unknown")}, its taste is ${lookup(var.fruits["banana"],"taste", "unknown")}, its price is ${lookup(var.fruits["banana"], "price", "unknown")} dollars and its quantity is ${lookup(var.fruits["banana"],"quantity","unknown")} and it is from ${lookup(var.fruits["banana"], "state", "Karnataka")}"
+  
+}
   
