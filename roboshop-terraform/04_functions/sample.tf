@@ -1,12 +1,4 @@
-variable "fruits" {
-  type = map(object({
-    color    = string
-    taste    = string
-    price    = number
-    quantity = number
-    state    = optional(string)
-  }))
-}
+variable "fruits" {}
 
 
 
