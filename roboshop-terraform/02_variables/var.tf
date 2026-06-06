@@ -21,3 +21,19 @@ output "my_fruits" {
   value = "My favourite fruit is ${var.fruits[2]}" 
   
 }
+
+variable "score" {
+  description = "A map of subjects and their scores"
+  type        = map(number)
+  default     = {
+    math    = 90,
+    science = 85,
+    english = 92
+  }
+  
+}
+
+output "my_score" {
+  value = "My score in science is ${var.score["science"]}"
+  
+}
