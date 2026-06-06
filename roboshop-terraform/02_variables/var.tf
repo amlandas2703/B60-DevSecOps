@@ -35,6 +35,6 @@ variable "score" {
 }
 
 output "my_score" {
-  value = "My score in science is ${var.score["hindi"]}"
+  value = "My score in hindi is ${var.score["hindi"]}"
   
 }
