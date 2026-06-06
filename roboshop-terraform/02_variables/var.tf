@@ -18,6 +18,6 @@ variable "fruits" {
 }
 
 output "my_fruits" {
-  value = "My favourite fruit is ${var.fruits[3]}" 
+  value = "My favourite fruit is ${var.fruits[2]}" 
   
 }
