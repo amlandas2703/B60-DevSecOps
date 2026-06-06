@@ -4,7 +4,7 @@ resource "aws_instance" "main" {
     instance_type = var.instance_type
 
     tags = {
-      Name = "roboshop-ec2"
+      Name = "${var.components}}"
     }
   
 }
