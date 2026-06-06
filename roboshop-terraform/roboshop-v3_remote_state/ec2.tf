@@ -4,7 +4,7 @@ resource "aws_instance" "main" {
     instance_type = lookup(each.value, "instance_type", "t3.medium")
 
     tags = {
-      Name = "${var.components[count.index]}"
+      Name = each.key
     }
   
 }
