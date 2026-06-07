@@ -3,3 +3,8 @@ module "ec2" {
   env_name = var.env_name
   
 }
+
+output "env_name" {
+  value = module.ec2.env_name
+  
+}
