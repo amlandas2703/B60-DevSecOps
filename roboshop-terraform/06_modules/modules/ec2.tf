@@ -5,7 +5,7 @@ resource "aws_instance" "main" {
     
 
     tags = {
-      Name = "sample"
+      Name = var.instance_name
     }
   
 }
