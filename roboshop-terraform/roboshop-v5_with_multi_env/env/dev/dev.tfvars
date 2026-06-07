@@ -1,5 +1,5 @@
 components = {
-    
+
     mongodb = {
         instance_type = "t3.medium"
     }
@@ -51,3 +51,4 @@ components = {
 env_name="dev"
 ami_name="Devops_dasa_image_rhel9"
 sg_name="B60-security_group"
+domain_name="bihamlanet.store"
