@@ -9,5 +9,5 @@ variable "instance_name" {
 }
 
 variable "ami_name" {
-  default = "DevOps-LabImage-RHEL9"
+  default = "Devops_dasa_image_rhel9"
 }
