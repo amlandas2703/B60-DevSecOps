@@ -1,6 +1,6 @@
 resource "aws_instance" "main" {
     
-    ami           = "ami-0fcc78c828f981df2"
+    ami           = data.aws_ami.latest.id
     instance_type = var.instance_type
     
 
