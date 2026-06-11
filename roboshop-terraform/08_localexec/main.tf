@@ -1,6 +1,6 @@
 resource "null_resource" "dasa-test" {
     provisioner "local-exec" {
-        command = "echo Hello World and the IP is ${self.private_ip} && touch /tmp/hello.txt"
+        command = "echo Hello World && touch /tmp/hello.txt"
       
     }
 }
