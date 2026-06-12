@@ -1,6 +1,6 @@
 resource "null_resource" "app" {
 
-    depends_on = [ aws_instance.main, aws_route53_record.private ]
+    depends_on = [ aws_instance.main, aws_route53_record.public ]
 
     provisioner "remote-exec" {
         
