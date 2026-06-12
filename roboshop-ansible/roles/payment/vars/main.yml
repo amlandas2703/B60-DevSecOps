@@ -1,7 +1,7 @@
 package: 
       - "python3"
-      - "gcc"
       - "python3-devel"
+      - "gcc"
 url: "https://stan-robotshop.s3.amazonaws.com/payment-v3.zip"
 AppUser: "roboshop"
 AppDirectory: "/app"
