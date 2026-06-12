@@ -3,5 +3,7 @@ resource "aws_route53_record" "public" {
   name    = "${var.name}-${var.env_name}"
   type    = "A"
   ttl     = 10
-  records = [aws_instance.main.private_ip]
+  records = [
+    each.key == "frontend" ? aws_instance.app[each.key].public_ip : aws_instance.app[each.key].private_ip
+  ]
 }
