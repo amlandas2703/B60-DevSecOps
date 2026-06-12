@@ -11,6 +11,10 @@
     tasks_from: createUser&App  
 
 
+- name: Upgrade pip, wheel and setuptools
+  ansible.builtin.command: pip3 install --upgrade pip wheel setuptools
+
+
 - name: Install Python dependencies from requirements.txt
   ansible.builtin.pip:
     requirements: /app/requirements.txt
