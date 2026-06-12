@@ -10,15 +10,21 @@
     name: common
     tasks_from: createUser&App  
 
-
-- name: Upgrade pip, wheel and setuptools
-  ansible.builtin.command: pip3 install --upgrade pip wheel setuptools
+- name: Ensure pip, setuptools, and wheel are upgraded
+  ansible.builtin.pip:
+    name:
+      - pip
+      - setuptools
+      - wheel
+    state: latest
+    executable: pip3
 
 
 - name: Install Python dependencies from requirements.txt
   ansible.builtin.pip:
     requirements: /app/requirements.txt
     chdir: /app
+    executable: pip3
 
 
 - name: Configure the {{ component }} service
