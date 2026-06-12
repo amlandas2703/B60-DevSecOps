@@ -1,6 +1,6 @@
 resource "null_resource" "app" {
 
-    depends_on = [ aws_instance.main ]
+    depends_on = [ aws_instance.main, aws_route53_record.private ]
 
     provisioner "remote-exec" {
         
@@ -11,10 +11,10 @@ resource "null_resource" "app" {
             host= aws_instance.main.private_ip
         }
         inline = [
-            "pip3.11 install ansible"
-             $ ansible-pull -U https://github.com/B60-CloudDevOps/roboshop-ansible.git roboshop/roboshop-pull.yml -e env=dev -e component=mongodb
+            "pip3.11 install ansible",
+            "type ansible",
+            "ansible-pull -U https://github.com/amlandas2703/B60-DevSecOps.git roboshop-ansible/roboshop-pull.yml -e env=${var.env_name} -e component=${var.name}"
         ]
-
     }
   
 }
