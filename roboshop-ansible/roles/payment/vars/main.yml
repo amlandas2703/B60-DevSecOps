@@ -3,7 +3,6 @@ package:
       - "python3-devel"
       - "gcc"
       - "python3-pip"
-      - "python3-wheel"
       - "python3-setuptools"
 url: "https://stan-robotshop.s3.amazonaws.com/payment-v3.zip"
 AppUser: "roboshop"
