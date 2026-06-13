@@ -4,7 +4,5 @@ resource "aws_route53_record" "public" {
   name    = "${var.name}-${var.env_name}"
   type    = "A"
   ttl     = 10
-  records = [
-    each.key == "frontend" ? each.value.public_ip : each.value.private_ip
-  ]
+  records = ["${local.get_instance_ip}"]
 }

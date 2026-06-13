@@ -8,6 +8,7 @@ module "ec2" {
   domain_name = var.domain_name
   name = each.key
   instance_type = each.value["instance_type"]
+  internal = each.value["internal"]
   
 }
 
