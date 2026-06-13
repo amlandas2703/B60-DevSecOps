@@ -1,6 +1,3 @@
-output "env_name" {
-  value = var.env_name
-}
 
 resource "aws_instance" "main" {
    
@@ -13,4 +10,8 @@ resource "aws_instance" "main" {
       Name = "${var.name}-${var.env_name}"
     }
   
+}
+
+output "env_name" {
+  value = var.env_name
 }
