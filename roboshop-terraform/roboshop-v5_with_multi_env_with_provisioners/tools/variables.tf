@@ -1,6 +1,6 @@
 variable "env_name" {
     type = string
-    default = tools
+    default = "tools"
 }
 variable "ami_name" {
     type = string
