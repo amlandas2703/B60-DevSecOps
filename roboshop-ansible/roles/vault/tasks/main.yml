@@ -1,5 +1,5 @@
 - name: configuring the vault repo
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: vault.repo
     dest: /etc/yum.repos.d/vault.repo
 
