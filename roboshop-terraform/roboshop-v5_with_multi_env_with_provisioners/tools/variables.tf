@@ -18,7 +18,7 @@ variable "domain_name" {
 
 variable "tools" {
     default = {
-        jenkins = {
+        vault = {
             instance_type = "t3.medium"
             internal = false
   
