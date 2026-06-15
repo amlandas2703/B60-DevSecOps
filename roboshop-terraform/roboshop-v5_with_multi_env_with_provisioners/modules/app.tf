@@ -16,6 +16,7 @@ resource "null_resource" "app" {
                "pip3.11 install --user ansible",
                "export PATH=$PATH:~/.local/bin",
                "ansible --version",
+               "pip3.11 install hvac",
                "ansible-pull -U https://github.com/amlandas2703/B60-DevSecOps.git roboshop-ansible/roboshop-pull.yml -e env=${var.env_name} -e component=${var.name}"
         ]
     }
