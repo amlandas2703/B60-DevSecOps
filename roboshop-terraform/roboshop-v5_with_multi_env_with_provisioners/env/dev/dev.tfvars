@@ -1,19 +1,19 @@
 components = {
 
-    mongodb = {
-        instance_type = "t3.medium"
-        internal = true
+    # mongodb = {
+    #     instance_type = "t3.medium"
+    #     internal = true
     }
 
-    catalogue = {
-        instance_type = "t3.medium"
-        internal = true
+    # catalogue = {
+    #     instance_type = "t3.medium"
+    #     internal = true
     }
 
-     shipping = {
+    #  shipping = {
         
-        instance_type = "t3.medium"
-        internal = true
+    #     instance_type = "t3.medium"
+    #     internal = true
     }
 
      payment = {
@@ -22,40 +22,40 @@ components = {
         internal = true
     }
 
-     redis = {
+    #  redis = {
         
-        instance_type = "t3.micro"
-        internal = true
+    #     instance_type = "t3.micro"
+    #     internal = true
     }
 
-     mysql = {
+    #  mysql = {
             
-            instance_type = "t3.micro"
-            internal = true
+    #         instance_type = "t3.micro"
+    #         internal = true
     }
 
-     user = {
+    #  user = {
         
-        instance_type = "t3.micro"
-        internal = true
+    #     instance_type = "t3.micro"
+    #     internal = true
     }
 
-     cart = {
+    #  cart = {
         
-        instance_type = "t3.micro"
-        internal = true
+    #     instance_type = "t3.micro"
+    #     internal = true
     }
      
-     rabbitmq = {
+    #  rabbitmq = {
         
-        instance_type = "t3.micro"
-        internal = true
+    #     instance_type = "t3.micro"
+    #     internal = true
     }    
      
-     frontend = {
+    #  frontend = {
         
-        instance_type = "t3.micro"
-        internal = false
+    #     instance_type = "t3.micro"
+    #     internal = false
     }
 }
 env_name="dev"
