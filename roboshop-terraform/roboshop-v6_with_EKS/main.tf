@@ -15,10 +15,7 @@
 
 module "EKS" {
   source = "./modules/eks"
-  env_name = var.env_name
-  sg_name = var.sg_name
-  vault_token = var.vault_token
-  
+
 }
 
 
