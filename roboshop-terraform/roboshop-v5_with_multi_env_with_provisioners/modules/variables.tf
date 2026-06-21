@@ -8,6 +8,9 @@ variable "instance_type" {}
 variable "name" {}
 variable "domain_name" {}
 variable "internal" {}
+variable "vault_token" {
+  
+}
 
 
 
