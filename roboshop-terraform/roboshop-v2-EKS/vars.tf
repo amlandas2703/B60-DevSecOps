@@ -1,0 +1,32 @@
+variable "cluster_name" {
+  type = string
+}
+
+variable "env" {
+  type = string
+}
+
+variable "eks_version" {
+  type = string
+}
+
+variable "subnet_ids" {
+  type = list(string)
+}
+
+variable "node_group_desired_size" {  
+  type = number
+
+}
+
+variable "node_group_max_size" {
+  type = number
+}
+
+variable "node_group_min_size" {
+  type = number
+}
+
+variable "instance_types" {
+  type = list(string)
+}
