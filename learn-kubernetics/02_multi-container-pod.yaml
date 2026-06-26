@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-container-pod
+  labels:
+    app: roboshop
+spec: 
+  containers:
+  - name: frontend
+    image: nginx
+    ports :
+    - containerPort: 80
+  - name: backend
+    image: redis
+    ports:
+    - containerPort: 6379
+  - name: sidecar
+    image: debian:latest
+    
