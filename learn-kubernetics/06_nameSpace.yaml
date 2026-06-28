@@ -7,10 +7,11 @@ metadata:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: frontend-namespace
+  namespace: roboshop
 spec:
   containers:
-  - name: nginx
+  - name: frontend-namespace
     image: nginx
     ports:
-    - containerPort: 80      
+    - containerPort: 80    
