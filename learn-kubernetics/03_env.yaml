@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-pod
+  labels:
+    app: env-app
+spec:
+  containers:
+  - name: env-container
+    image: nginx
+    ports:
+    - containerPort: 80
+    env:
+    - name: webserver
+      value: "nginx"
+    - name: app-mode
+      value: "auto"
+    - name: app-version
+      value: "1.0"
+    - name: app-port
+      value: "8080"         
