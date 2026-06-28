@@ -15,3 +15,18 @@ data:
     color.good=purple
     color.bad=yellow
     allow.textmode=true
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: game-demo-pod
+spec:
+  containers:
+  - name: game-demo-container
+    image: nginx
+    ports:
+    - containerPort: 80
+    envFrom:
+    - configMapRef:
+        name: game-demo-configmap      
