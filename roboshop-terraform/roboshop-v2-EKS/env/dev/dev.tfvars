@@ -1,7 +1,7 @@
 subnet_ids = [
-      "subnet-0e8b46e75224cb3c9",
-      "subnet-019da47817fb4488b",
-      "subnet-0c23caf2e6636d36f"
+      "subnet-09b2695bd71493b07",
+      "subnet-0c203b4835f801325",
+      "subnet-0289482dd0866e2a3"
 ]
 
 cluster_name = "roboshop"

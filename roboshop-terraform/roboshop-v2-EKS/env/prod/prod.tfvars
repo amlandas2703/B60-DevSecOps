@@ -60,5 +60,5 @@ components = {
 }
 env_name="prod"
 ami_name="Devops_dasa_image_rhel9"
-sg_name="B60-security_group"
+sg_name="DevOps-B60-sg"
 domain_name="bihamlanet.store"
